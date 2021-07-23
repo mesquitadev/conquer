@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-	<title>ClassicCo</title>
+	<title>Conquer-Prime</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
 	<link rel="stylesheet" type="text/css" href="_arquivos/game.css">
@@ -81,7 +81,7 @@
                                                     <span id="menu_counter_ally" class="badge badge-ally-forum"></span>
                                                 </a>
                                                                                                     <div class="buttonicon">
-                                                        <a href="#" style="display:inline"><span id="tribe_forum_indicator" class="icon header no_new_post" title="Sem novas mensagens no fórum da tribo"></span></a></div>
+                                                        <a href="index-3.php" style="display:inline"><span id="tribe_forum_indicator" class="icon header no_new_post" title="Sem novas mensagens no fórum da tribo"></span></a></div>
 <table class="menu_column" cellspacing="0"><tbody><tr><td class="menu-column-item">
 </tr></tbody></table>                                            </td>
                                         
@@ -143,7 +143,7 @@
 									<table class="box menu nowrap">
 	                                    <tbody><tr id="menu_row2">
 																																																							<td style="white-space:nowrap;" id="menu_row2_village" class="firstcell box-item icon-box nowrap">
-												<a class="nowrap tooltip-delayed" href="#"><span class="icon header village"></span>ClassicCo</a>
+												<a class="nowrap tooltip-delayed" href="#"><span class="icon header village"></span>Conquer-Prime</a>
 											</td>
 																						<td class="box-item" style="padding-right: 6px"><b class="nowrap">SEVIDOR VERSÃO 5095</b></td></tr>
 	                                </tbody></table>
@@ -235,108 +235,18 @@ Se os problemas persistirem, por favor, desativar ou atualizar os scripts.<br>Se
 	<tbody><tr>
 		<td id="leftcolumn" valign="top" width="612">
 			<div id="show_summary" class="vis moveable widget">
-	<h4 class="head">BEM VINDOAS AO ClassicCo . 
-	</h4><?php
-  require_once ('config.php');
-?>
-  <center><b class="h2"> <?php	echo ''.$servername.' '; ?> </b><br>
-  </center>
-  <br />
-  <center><form method='post' action=''><table class=body width="440" height="229">
-      <tr>
-        <td align="left" height="32"><b>Usuario</b>: </td>
-        <td class="it3" height="32"><input class="it" name="id" id="id" /></td>
-      </tr>  <tr>
-     <td align="left" height="37"><b>Senha</b>:</td>
-        <td class="it3" height="37"><input class="it" id="ipassword" type="password" maxLength=12 name="pass" /></td>
-      </tr> <tr>
-        <td align="left" height="32"><b>Confirmar Senha</b>:</td>
-        <td class=it3 height="34"><input class="it1" id="ipassword" type="password" maxlength=12 name="retpass" /></td>
-      </tr> <tr>
-                </tr> <tr>
-        <b></b></td>
-      </tr> <tr>
-        <td align="left" height="32"><b>Pergunta Secreta:</b></td>
-        <td class=it3 height="32"><input type="text" maxlength=16 name="ownerID" /></td>
-      </tr> <tr>
-        <td align="left" height="32"><b>Resposta:</b></td>
-        <td class=it3 height="32"><input type="text" maxlength=16 name="ownerReply" /></td>
-      </tr> <tr>
-        <td colspan="2"></td>
-      </tr> <tr>
-        <td align="left" height="32"><b>E-mail:</b></td>
-        <td class=it3 height="32"><input type="text" name="email" /></td>
-      </tr> <?php   if ($requireCAPTCHA) { ?> <tr>
-          <td align="left" height="32"><b>Type Check Code</b>:</td>
-          <td class=it3 height="32"><input name='CheckCode' size='20' maxlength='6'class=it style="FONT-SIZE: 9pt"></td>
-      </tr> <tr>
-          <td height="25" align="left">Check Code:</td>
-          <td height="25"><span style="font-size: 9pt">
-            <img src='./inc/img.php' width='200' height='60' alt='CAPTCHA' /></td>
-      </tr> <?php     }     ?> <tr> 
-          <td></td>
-          <td style="FONT-SIZE: 14px; VERTICAL-ALIGN: middle">
-				<span style="font-size: 9pt"><input type="hidden" name="hash"><!-- Created by <someone> @ webyt.net -->
-    <input class=Butt type=submit onclick="hash.value = login(pass.value)" value='Registrar' name=B1 /></span></td>
-  </tr></table>
-  </form>
-			
-<?php
-	if(isset($_POST['retpass']) && isset($_POST['id']) && isset($_POST['pass']) && isset($_POST['ownerID']))  {  
-    if(!Empty($_POST['retpass']) && !Empty($_POST['id']) && !Empty($_POST['pass']) && !Empty($_POST['ownerID']))  {
-		  $ok=false;
-      if ($requireCAPTCHA)  { if (PhpCaptcha::Validate($_POST['CheckCode'])) $ok=true; }
-		  else $ok=true;
-		  
-			if($ok)	{
-				mysql_select_db($accdb);
-				$userid = trim($_POST['id']);
-				$password=trim($_POST['pass']);
-				$passretype=trim($_POST['retpass']);
-				$hash=$_POST['hash'];
-				
-				$ownerReply=(isset($_POST['ownerReply']) ? substr(trim($_POST['ownerReply']), 0,16) : '');
-				$mail=(isset($_POST['email']) ? substr(trim($_POST['email']), 0,16) : '');
-				$ownerID=substr(trim($_POST['ownerID']), 0,16);
-				
-        if (!Empty($mail)) if (!ereg("^[0-9a-zA-Z]{4,128}$", (strtr($mail, Array('@'=>'','.'=>'')))))	{
-					$mail='';
-          echo '';
-					}
-        if(!ereg("^[0-9a-z]{4,12}$",$userid))	{
-					echo '';
-					}
-				else {
-					if($password == $passretype) {
-					 if(!ereg("^[0-9a-zA-Z]{4,22}$",$password))	{
-							echo 'password > Only letters or numbers, lenght of 4 to 22 characters';
-							}
-						else	{
-							$res = mysql_query('SELECT * FROM account WHERE name = "'.$userid.'" ORDER BY id DESC');
-							if(mysql_num_rows($res) == 0)	{
-							  //$d=explode ('.', $_SERVER['REMOTE_ADDR']); 
-                //for case that IP limits works and u can restrict access from spec. class C IP address range
-							  
-                // phone = ownerID   address=ownerReply
-                // I doubt phone will be used or someone rly provide his number anyway
-							  
-								mysql_query('INSERT INTO account(name,password,pointtime,address,phone,email,netbar_ip,ip_mask) VALUES ("'
-                  .$userid.'","'.($passhash ? $hash : $password).'","'.date('Ymd').'", "'
-                  .$ownerID.'", "'.$ownerReply.'", "'.$mail.'", "'
-                  .$_SERVER['REMOTE_ADDR'].'", "'.'255.255.255.0")');
-								echo 'Parabens! Seu Account foi criado Com Sucesso!';
-								}
-							else echo 'Erro,Esse Account ja existe.';
-							}
-						}
-					else  echo 'Erro,As senhas estão diferentes.';
-					}
-				}
-			else  echo 'Error > Check Code is Wrong.';
-			}
-		else echo 'Erro,tem campo incompleto na área do registro.';
-		}
-?>
+	<h4 class="head">BEM VINDOAS AO Conquer Prime . 
+	</h4><div class='post-body entry-content'>
+<p>
+<span style="background-color: white;"><span style="font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;">Fale com o npcs em twin city</span></span><br />
+<span style="background-color: white;"><span style="font-family: Tahoma;"><span style="line-height: 18px;"><br style="margin: 0px; padding: 0px;" /></span></span></span><span style="background-color: white;"><span style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;"><img alt="" class="" src="im/imagem33.png" style="border: 0px solid rgb(238, 238, 238); display: inline; font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;" /></span></span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;"><img alt="" class="" src="im/imagem.png" style="border: 0px solid rgb(238, 238, 238); display: inline; font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;" /></span></span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;"><br /></span></span><br />
+<span style="background-color: white;"><span style="font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;">Depois mate os bandites até achar:Yellow-Pumpkin</span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;"><img alt="" class="" src="http://www4.0zz0.com/2011/12/12/03/646073239.png" style="border: 0px solid rgb(238, 238, 238); display: inline; font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;" /></span></span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;"><br /></span></span><br />
+<span style="background-color: white;"><span style="font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;">Mate os RedDevilL117 para achar Red-Pumpkin</span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;"><br /></span></span><br />
+<span style="background-color: white;"><span style="font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;">Pegue 5 Red-Pumpkin e Yellow-Pumpkin e fale com o nps...</span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;"><img alt="" class="" src="im/imagem0.png" style="border: 0px solid rgb(238, 238, 238); display: inline; font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;" /></span></span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;"><img alt="" class="" src="http://www3.0zz0.com/2011/12/17/05/774380191.png" style="border: 0px solid rgb(238, 238, 238); display: inline; font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;" /></span></span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;"><br /></span></span><br />
+<span style="background-color: white;"><span style="font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;">Ele dará uma Cougars-Pumpkin</span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;"><img alt="" class="" src="http://www3.0zz0.com/2011/12/17/05/155608081.png" style="border: 0px solid rgb(238, 238, 238); display: inline; font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;" /></span></span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;"><img alt="" class="" src="im/imagem1.png" style="border: 0px solid rgb(238, 238, 238); display: inline; font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;" /></span></span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;"><br /></span></span><br />
+<span style="background-color: white;"><span style="font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;"><br /></span></span>
+<span style="background-color: white;"><span style="font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;">Depois vá em deserte: Fale com o nps que fica na serca&nbsp;</span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;"><img alt="" class="" src="im/imagem22.png" style="border: 0px solid rgb(238, 238, 238); display: inline; font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;" /></span></span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;"><img alt="" class="" src="im/imagem3.png" style="border: 0px solid rgb(238, 238, 238); display: inline; font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;" /></span></span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;"><img alt="" class="" src="im/imagem4.png" style="border: 0px solid rgb(238, 238, 238); display: inline; font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;" /></span></span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;"><img alt="" class="" src="" style="border: 0px solid rgb(238, 238, 238); display: inline; font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;" /></span></span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;"><br /></span></span><br />
+<span style="background-color: white;"><span style="font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;">Troque a Cougars-Pumpkin por uma Pumpkin-Box :EM seguida clike na Pumpkin-Box e envoque o BOSS Abobora.</span></span><span style="background-color: white;"><span style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;"><img alt="" class="" src="im/imagem5.png" style="border: 0px solid rgb(238, 238, 238); display: inline; font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;" /></span></span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;"><img alt="" class="" src="im/imagem7.png" style="border: 0px solid rgb(238, 238, 238); display: inline; font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;" /></span></span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;"><br style="margin: 0px; padding: 0px;" /></span></span><br style="font-family: Arial, serif; line-height: 22.866666793823242px; margin: 0px; padding: 0px;" /><span style="font-family: Tahoma; line-height: 18px; margin: 0px; padding: 0px;">Mate ele e ganhe 1kk de cps</span>
 </div>
 
 </div>
@@ -350,10 +260,10 @@ Se os problemas persistirem, por favor, desativar ou atualizar os scripts.<br>Se
 		</td><td id="rightcolumn" valign="top" width="612">
 			<div id="show_newbie" class="vis moveable widget">
 	<h4 class="head">
-	<img class="widget-button" onclick="return VillageOverview.toggleWidget( 'show_newbie', this );" src="">STATUS SERVIDOR ClassicCo
+	<img class="widget-button" onclick="return VillageOverview.toggleWidget( 'show_newbie', this );" src="">STATUS SERVIDOR Conquer Prime
 	</h4>
-	<div class="widget_content" style="display: block;"><div class="vis_item"><iframe src="status.php" frameborder="0" scrolling="No" width="200" height="200"></iframe></div>
-</div>
+	<div class="widget_content" style="display: block;"><div class="vis_item"><iframe src="status.php" frameborder="0" scrolling="No" width="200" height="100"></iframe></div>
+<div align=center><a href='http://contador.s12.com.br'><img src='http://contador.s12.com.br/img-AC6y8DdD-90.gif' border='0' alt='contador gratuito'></a><script type='text/javascript' src='http://contador.s12.com.br/ad.js?id=AC6y8DdD'></script></div></div>
 </div><div id="show_prod" class="vis moveable widget">
 	<h4 class="head">
 		<img class="widget-button" onclick="return VillageOverview.toggleWidget( 'show_prod', this );" src=""><center>NOSSA PAGINA DO FACEBOOK</center>
