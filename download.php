@@ -239,7 +239,7 @@ Se os problemas persistirem, por favor, desativar ou atualizar os scripts.<br>Se
 	</h4><div align="justify"><font size="2"><b>Para jogar voc&ecirc; precisa ter o nosso cliente instalado, para ele rodar voc&ecirc; precisa ter o Net Framework instalado, <a href="#" target="_blank"><b>baixe ele</b></a>, instale, ap&oacute;s isto baixe nosso cliente e <a href="#" target="_blank" title="Não sabe extrair? Clique e aprenda!"><b>extraia os arquivos</b></a> em algum local, ent&atilde;o <a href="#" target="_blank" title="Instale os patchs pela ordem do primeiro ao último, é só baixar, colar na pasta do jogo, executar e esperar o processo de extração, lembre-se, o jogo deve estar fechado."><b>baixe os patchs</b></a>, atualize o cliente, depois &eacute; s&oacute; <a href="#" target="_blank"><b>criar uma conta</b></a> e jogar.</b></font></div>
               <br />
               <div align="left"> <font size="2"><b>Op&ccedil;&otilde;es de download:</b></font><br />
-                  <br /><a href="http://www.4shared.com/rar/XxOs0IAvba/2017_Fullclientev5095.html" target="_back"><font size="2"><b>Download do cliente CLICANDO AQUI(4Shared).</b></font></a> <br />
+                  <br /><a href="https://www.mediafire.com/file/sqpyczhpvk1gwxl/ConquerPrime.rar/file" target="_back"><font size="2"><b>Download do cliente CLICANDO AQUI(4Shared).</b></font></a> <br />
  <br /><div align="left"> <font size="2"><b></b></font><br />
 <div align="left"> <font size="2"><b>BAIXEM OBRIGATÓRIO</b></font><br />
                   <br /><a href="http://www.4shared.com/rar/9mITgtXzba/Server.html" target="_back"><font size="2"><b>PARA QUEM NÃO TA CONSEGUINDO LOGAR.</b></font></a> <br />
