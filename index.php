@@ -38,7 +38,7 @@
 </div>
 <table style="width:100%" border="0" height="90px" align="center">
   <tr>
-    <td><div id="container-concordo" class="concordo"><a title="Concordo" href="index1.htm">
+    <td><div id="container-concordo" class="concordo"><a title="Concordo" href="index1.php">
     <h2>Concordo</h2>
 </a></div></td>
     <td><div id="container-discordo" class="discordo"><a title="Discordo" href="https://www.google.com.br">
