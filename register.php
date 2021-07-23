@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <title>Conquer Prime</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
@@ -464,7 +463,11 @@
                                   <div id="show_summary" class="vis moveable widget">
                                     <h4 class="head">BEM VINDOAS AO Conquer Prime .
                                     </h4>
-                                    <b class="h2"> <?php	echo ''.$servername.' '; ?> </b><br>
+                                    <?php
+  require_once ('config.php');
+?>
+                                    <center><b class="h2"> <?php	echo ''.$servername.' '; ?> </b><br>
+                                    </center>
                                     <br />
                                     <center>
                                       <form method='post' action=''>
@@ -580,6 +583,7 @@
 		else echo 'Erro,tem campo incompleto na área do registro.';
 		}
 ?>
+
                           </div>
 
                           </div>
