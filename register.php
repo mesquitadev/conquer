@@ -1,6 +1,4 @@
-﻿<?php
-																			require_once ('config.php');
-																		?>
+﻿
 <!DOCTYPE html>
 <title>Conquer Prime</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
